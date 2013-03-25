@@ -1,9 +1,12 @@
 package elementsArq;
 
+
 public class ArquiteturaCompleta implements Runnable{
 	private int tamWord;
 	
 	private boolean[] lastDateMemoryReceived;
+	
+	private boolean[][] memoriaDeControle;
 	
 	private Register R0;
 	private Register R1;
@@ -80,6 +83,8 @@ public class ArquiteturaCompleta implements Runnable{
 			this.lastDateMemoryReceived[i] = false;
 		}
 		
+		this.criarMemoriaDeControle();
+		
 		this.R0 = new Register(this.tamWord);
 		this.R1 = new Register(this.tamWord);
 		this.A = new Register(this.tamWord);;
@@ -110,6 +115,10 @@ public class ArquiteturaCompleta implements Runnable{
 		this.objALU = new ALU(this.tamWord);
 		
 		this.memory = new PrimaryMemory(1024, this.tamWord);
+	}
+	
+	private void criarMemoriaDeControle(){
+		this.memoriaDeControle = new boolean[1024][32];
 	}
 
 	@Override
@@ -201,9 +210,5 @@ public class ArquiteturaCompleta implements Runnable{
 			if(this.r)
 				this.RDADO.setValue(saidaMux1);
 		}
-	}
-	
-	private class UnidadeControle{
-		
 	}
 }
