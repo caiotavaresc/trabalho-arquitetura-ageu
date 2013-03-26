@@ -24,7 +24,6 @@ public class ArquiteturaCompleta implements Runnable{
 	private Register G;
 	private Register H;
 	private Register I;
-	private Register J;
 	
 	private Register IR;
 	private Register RDADO;
@@ -72,7 +71,6 @@ public class ArquiteturaCompleta implements Runnable{
 	private boolean c2;
 	private boolean d2;
 	private boolean e2;
-	private boolean f2;
 	
 	public ArquiteturaCompleta(){
 		this.tamWord = 32;
@@ -101,7 +99,6 @@ public class ArquiteturaCompleta implements Runnable{
 		this.G = new Register(this.tamWord);
 		this.H = new Register(this.tamWord);
 		this.I = new Register(this.tamWord);
-		this.J = new Register(this.tamWord);
 		
 		this.IR = new Register(this.tamWord);
 		this.RDADO = new Register(this.tamWord);
@@ -119,10 +116,24 @@ public class ArquiteturaCompleta implements Runnable{
 	
 	private void criarMemoriaDeControle(){
 		this.memoriaDeControle = new boolean[1024][32];
+		
+		this.memoriaDeControle[0] = FuncoesAuxiliares.getNumber(Integer.parseInt("1110000010", 2), 32);
+		this.memoriaDeControle[1] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000001110000010", 2), 32);
+		
+		this.memoriaDeControle[2] = FuncoesAuxiliares.getNumber(Integer.parseInt("1110000000", 2), 32);
+		this.memoriaDeControle[3] = FuncoesAuxiliares.getNumber(Integer.parseInt("10001110000000", 2), 32);
+		
+		this.memoriaDeControle[4] = FuncoesAuxiliares.getNumber(Integer.parseInt("10", 2), 32);
+		
+		this.memoriaDeControle[5] = FuncoesAuxiliares.getNumber(Integer.parseInt("0", 2), 32);
+		
+		this.memoriaDeControle[6] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000000000000", 2), 32);
+		
+		
 	}
 	
 	private void mudaControles(boolean[] controladores){
-		if(controladores.length != 32){
+		if(controladores.length != 31){
 			return;
 		}
 		
@@ -133,8 +144,8 @@ public class ArquiteturaCompleta implements Runnable{
 		this.e = controladores[4];
 		this.f = controladores[5];
 		this.g = controladores[6];
-		this.h = controladores[7];
 		
+		this.h = controladores[7];
 		this.i = controladores[8];
 		this.j = controladores[9];
 		this.k = controladores[10];
@@ -142,60 +153,56 @@ public class ArquiteturaCompleta implements Runnable{
 		this.m = controladores[12];
 		this.n = controladores[13];
 		this.o = controladores[14];
-		this.p = controladores[15];
 		
+		this.p = controladores[15];
 		this.q = controladores[16];
 		this.r = controladores[17];
-		this.s = controladores[18];
 		
+		this.s = controladores[18];
 		this.t = controladores[19];
 		this.u = controladores[20];
-		this.v = controladores[21];
 		
+		this.v = controladores[21];
 		this.w = controladores[22];
 		this.x = controladores[23];
+		
 		this.y = controladores[24];
 		
 		this.z = controladores[25];
-		
 		this.a2 = controladores[26];
 		this.b2 = controladores[27];
 		this.c2 = controladores[28];
 		this.d2 = controladores[29];
-		this.e2 = controladores[30];
 		
-		this.f2 = controladores[31];
+		this.e2 = controladores[30];
 	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		while(!halt){
-			this.mux3Esquerda.setValues(this.R0.getValue(), this.R1.getValue(), this.A.getValue(), this.B.getValue(), this.C.getValue(), this.D.getValue(), this.E.getValue(), this.PC.getValue());
-			this.mux3Direita.setValues(this.R2.getValue(), this.R3.getValue(), this.R4.getValue(), this.F.getValue(), this.G.getValue(), this.H.getValue(), this.I.getValue(), this.J.getValue());
+			this.mux3Esquerda.setValues(this.RDADO.getValue(), this.R0.getValue(), this.R1.getValue(), this.A.getValue(), this.B.getValue(), this.C.getValue(), this.D.getValue(), this.PC.getValue());
+			this.mux3Direita.setValues(this.R2.getValue(), this.R3.getValue(), this.R4.getValue(), this.E.getValue(), this.F.getValue(), this.G.getValue(), this.H.getValue(), this.I.getValue());
 			
-			boolean[] arraySaidaEsquerda = new boolean[]{this.w, this.x, this.y};
-			boolean[] arraySaidaDireita = new boolean[]{this.t, this.u, this.v};
+			boolean[] arraySaidaEsquerda = new boolean[]{this.v, this.w, this.x};
+			boolean[] arraySaidaDireita = new boolean[]{this.s, this.t, this.u};
 			
 			this.objALU.setLados(this.mux3Esquerda.getValue(arraySaidaEsquerda), this.mux3Direita.getValue(arraySaidaDireita));
 			
 			
 			
-			boolean[] setFunctionALU = new boolean[]{this.a2, this.b2, this.c2, this.d2, this.e2};
+			boolean[] setFunctionALU = new boolean[]{this.z, this.a2, this.b2, this.c2, this.d2};
 			
 			this.objALU.setFuncao(setFunctionALU);
 			
 			boolean[] resultFunction = this.objALU.getResult();
 			
 			{
-				if(this.q)
+				if(this.p)
 					this.IR.setValue(resultFunction);
 				
-				if(this.s)
+				if(this.r)
 					this.REND.setValue(resultFunction);
-				
-				if(this.p)
-					this.J.setValue(resultFunction);
 				
 				if(this.o)
 					this.I.setValue(resultFunction);
@@ -210,20 +217,20 @@ public class ArquiteturaCompleta implements Runnable{
 					this.F.setValue(resultFunction);
 				
 				if(this.k)
-					this.R4.setValue(resultFunction);
+					this.E.setValue(resultFunction);
 				
 				if(this.j)
-					this.R3.setValue(resultFunction);
+					this.R4.setValue(resultFunction);
 				
 				if(this.i)
-					this.R2.setValue(resultFunction);
+					this.R3.setValue(resultFunction);
 				
 				
 				if(this.h)
-					this.PC.setValue(resultFunction);
+					this.R2.setValue(resultFunction);
 				
 				if(this.g)
-					this.E.setValue(resultFunction);
+					this.PC.setValue(resultFunction);
 				
 				if(this.f)
 					this.D.setValue(resultFunction);
@@ -244,16 +251,16 @@ public class ArquiteturaCompleta implements Runnable{
 					this.R0.setValue(resultFunction);	
 			}
 			
-			if(this.f2)
+			if(this.e2)
 				this.lastDateMemoryReceived = this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()));
 			else
 				this.memory.setWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()), this.RDADO.getValue());
 			
 			this.mux1RDado.setValues(this.lastDateMemoryReceived, resultFunction);
 			
-			boolean[] saidaMux1 = this.mux1RDado.getValue(this.z);
+			boolean[] saidaMux1 = this.mux1RDado.getValue(this.y);
 			
-			if(this.r)
+			if(this.q)
 				this.RDADO.setValue(saidaMux1);
 		}
 	}
