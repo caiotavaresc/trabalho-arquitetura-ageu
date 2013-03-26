@@ -14,12 +14,12 @@ public class ArquiteturaCompleta implements Runnable{
 	private Register B;
 	private Register C;
 	private Register D;
-	private Register E;
 	private Register PC;
 	
 	private Register R2;
 	private Register R3;
 	private Register R4;
+	private Register E;
 	private Register F;
 	private Register G;
 	private Register H;
@@ -82,26 +82,26 @@ public class ArquiteturaCompleta implements Runnable{
 		}
 		
 		this.criarMemoriaDeControle();
-		
+
+		this.RDADO = new Register(this.tamWord);
 		this.R0 = new Register(this.tamWord);
 		this.R1 = new Register(this.tamWord);
 		this.A = new Register(this.tamWord);;
 		this.B = new Register(this.tamWord);
 		this.C = new Register(this.tamWord);
 		this.D = new Register(this.tamWord);
-		this.E = new Register(this.tamWord);
 		this.PC = new Register(this.tamWord);
 		
 		this.R2 = new Register(this.tamWord);
 		this.R3 = new Register(this.tamWord);
 		this.R4 = new Register(this.tamWord);
+		this.E = new Register(this.tamWord);
 		this.F = new Register(this.tamWord);
 		this.G = new Register(this.tamWord);
 		this.H = new Register(this.tamWord);
 		this.I = new Register(this.tamWord);
 		
 		this.IR = new Register(this.tamWord);
-		this.RDADO = new Register(this.tamWord);
 		this.REND = new Register(this.tamWord);
 		
 		this.mux3Direita = new Multiplexador3(this.tamWord);
@@ -115,8 +115,9 @@ public class ArquiteturaCompleta implements Runnable{
 	}
 	
 	private void criarMemoriaDeControle(){
-		this.memoriaDeControle = new boolean[1024][32];
 		
+		this.memoriaDeControle = new boolean[1024][31];
+		/*
 		this.memoriaDeControle[0] = FuncoesAuxiliares.getNumber(Integer.parseInt("1110000010", 2), 32);
 		this.memoriaDeControle[1] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000001110000010", 2), 32);
 		
@@ -128,7 +129,7 @@ public class ArquiteturaCompleta implements Runnable{
 		this.memoriaDeControle[5] = FuncoesAuxiliares.getNumber(Integer.parseInt("0", 2), 32);
 		
 		this.memoriaDeControle[6] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000000000000", 2), 32);
-		
+		*/
 		
 	}
 	
@@ -225,9 +226,9 @@ public class ArquiteturaCompleta implements Runnable{
 				if(this.i)
 					this.R3.setValue(resultFunction);
 				
-				
 				if(this.h)
 					this.R2.setValue(resultFunction);
+				
 				
 				if(this.g)
 					this.PC.setValue(resultFunction);
@@ -252,9 +253,9 @@ public class ArquiteturaCompleta implements Runnable{
 			}
 			
 			if(this.e2)
-				this.lastDateMemoryReceived = this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()));
+				this.memory.setWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()), this.RDADO.getValue()); // 1 - Escrita <=> 0 - Leitura
 			else
-				this.memory.setWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()), this.RDADO.getValue());
+				this.lastDateMemoryReceived = this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()));
 			
 			this.mux1RDado.setValues(this.lastDateMemoryReceived, resultFunction);
 			
