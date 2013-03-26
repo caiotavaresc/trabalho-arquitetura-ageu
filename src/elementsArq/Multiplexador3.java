@@ -54,8 +54,8 @@ public class Multiplexador3 {
 		boolean[] saida = new boolean[4];
 		saida[0] = false;
 		saida[1] = desiredSaida[0];
-		saida[1] = desiredSaida[1];
-		saida[1] = desiredSaida[2];
+		saida[2] = desiredSaida[1];
+		saida[3] = desiredSaida[2];
 		
 		
 		int number = FuncoesAuxiliares.getIntNumber(saida);
