@@ -114,23 +114,199 @@ public class ArquiteturaCompleta implements Runnable{
 		this.memory = new PrimaryMemory(1024, this.tamWord);
 	}
 	
+	public void insereMemoria(int position, boolean[] valor){
+		this.memory.setWord(position, valor);
+	}
+	
+	public void executaPrograma(boolean[] posicaoInicial){
+		if(posicaoInicial.length != 32)
+			return;
+		
+		this.PC.setValue(posicaoInicial);
+		this.buscaInstrucao();
+	}
+	
+	private void buscaInstrucao(){
+		
+		try{
+			//REND<-PC
+		
+			//T1
+			this.mudaControles(this.memoriaDeControle[8]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[8]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[9]);
+			Thread.sleep(1);
+			
+			//RDADO <- MEMÓRIA
+			
+			//T1
+			this.mudaControles(this.memoriaDeControle[2]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[2]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[3]);
+			Thread.sleep(1);
+			
+			//IR <- RDADO
+			
+			//T1
+			this.mudaControles(this.memoriaDeControle[4]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[4]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[10]);
+			Thread.sleep(1);
+			
+			this.executaInstrucao(this.IR);
+			
+		}catch(InterruptedException e){
+			this.halt = true;
+		}
+	}
+	
+	private void executaInstrucao(Register IR){
+		int number = FuncoesAuxiliares.getIntNumber(IR.getValue());
+		
+		switch(number){
+			case 0:
+				this.halt();
+				break;
+			case 1:
+				this.addConstR0();
+		}
+	}
+	
 	private void criarMemoriaDeControle(){
 		
 		this.memoriaDeControle = new boolean[1024][31];
-		/*
-		this.memoriaDeControle[0] = FuncoesAuxiliares.getNumber(Integer.parseInt("1110000010", 2), 32);
-		this.memoriaDeControle[1] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000001110000010", 2), 32);
 		
-		this.memoriaDeControle[2] = FuncoesAuxiliares.getNumber(Integer.parseInt("1110000000", 2), 32);
-		this.memoriaDeControle[3] = FuncoesAuxiliares.getNumber(Integer.parseInt("10001110000000", 2), 32);
+		// REND <- PC+1 e PC <- PC+1
+		this.memoriaDeControle[0] = FuncoesAuxiliares.getNumber(Integer.parseInt("1110000010", 2), 31);
+		this.memoriaDeControle[1] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000010001110000010", 2), 31);
 		
-		this.memoriaDeControle[4] = FuncoesAuxiliares.getNumber(Integer.parseInt("10", 2), 32);
+		// RDADO <- MEMÓRIA
+		this.memoriaDeControle[2] = FuncoesAuxiliares.getNumber(Integer.parseInt("1", 2), 31);
+		this.memoriaDeControle[3] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000001", 2), 31);
 		
-		this.memoriaDeControle[5] = FuncoesAuxiliares.getNumber(Integer.parseInt("0", 2), 32);
+		// E <- RDADO
+		this.memoriaDeControle[4] = FuncoesAuxiliares.getNumber(Integer.parseInt("0", 2), 31);
+		this.memoriaDeControle[5] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000000000000", 2), 31);
 		
-		this.memoriaDeControle[6] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000000000000", 2), 32);
-		*/
+		//R0 <- R0 + E
+		this.memoriaDeControle[6] = FuncoesAuxiliares.getNumber(Integer.parseInt("110010001100", 2), 31);
+		this.memoriaDeControle[7] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000000000110010001100", 2), 31);
 		
+		//REND <- PC
+		this.memoriaDeControle[8] = FuncoesAuxiliares.getNumber(Integer.parseInt("1110000000", 2), 31);
+		this.memoriaDeControle[9] = FuncoesAuxiliares.getNumber(Integer.parseInt("10001110000000", 2), 31);
+		
+		//IR <- RDADO
+		//this.memoriaDeControle[4]
+		this.memoriaDeControle[10] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000000", 2), 31);
+	}
+	
+	private void addConstR0(){		
+		try{
+			
+			// REND <- PC+1 e PC<-PC+1
+			
+			//T1
+			this.mudaControles(this.memoriaDeControle[0]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[0]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[1]);
+			Thread.sleep(1);
+			
+			//RDADO <- MEM
+			
+			//T1
+			this.mudaControles(this.memoriaDeControle[2]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[2]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[3]);
+			Thread.sleep(1);
+			
+			//E <- RDADO
+			
+			//T1
+			this.mudaControles(this.memoriaDeControle[4]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[4]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[5]);
+			Thread.sleep(1);
+			
+			//R0 <- R0 + E
+			
+			//T1
+			this.mudaControles(this.memoriaDeControle[6]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[6]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[7]);
+			Thread.sleep(1);
+			
+			// REND <- PC+1 e PC<-PC+1
+			
+			//T1
+			this.mudaControles(this.memoriaDeControle[0]);
+			Thread.sleep(1);
+			//T2
+			this.mudaControles(this.memoriaDeControle[0]);
+			Thread.sleep(1);
+			//T3
+			this.mudaControles(this.memoriaDeControle[1]);
+			Thread.sleep(1);
+		
+		}catch(InterruptedException e){
+			this.halt = true;
+		}
+		
+		this.buscaInstrucao();
+	}
+	
+	private void halt(){
+		this.halt = true;
+		
+		this.showRegistradores();
+	}
+	
+	private void showRegistradores(){
+		System.out.println("R0 = " + FuncoesAuxiliares.getIntNumber(R0.getValue()));
+		System.out.println("R1 = " + FuncoesAuxiliares.getIntNumber(R1.getValue()));
+		System.out.println("R2 = " + FuncoesAuxiliares.getIntNumber(R2.getValue()));
+		System.out.println("R3 = " + FuncoesAuxiliares.getIntNumber(R3.getValue()));
+		System.out.println("R4 = " + FuncoesAuxiliares.getIntNumber(R4.getValue()));
+		System.out.println("A = " + FuncoesAuxiliares.getIntNumber(A.getValue()));
+		System.out.println("B = " + FuncoesAuxiliares.getIntNumber(B.getValue()));
+		System.out.println("C = " + FuncoesAuxiliares.getIntNumber(C.getValue()));
+		System.out.println("D = " + FuncoesAuxiliares.getIntNumber(D.getValue()));
+		System.out.println("E = " + FuncoesAuxiliares.getIntNumber(E.getValue()));
+		System.out.println("F = " + FuncoesAuxiliares.getIntNumber(F.getValue()));
+		System.out.println("G = " + FuncoesAuxiliares.getIntNumber(G.getValue()));
+		System.out.println("H = " + FuncoesAuxiliares.getIntNumber(H.getValue()));
+		System.out.println("I = " + FuncoesAuxiliares.getIntNumber(I.getValue()));
+		System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(RDADO.getValue()));
+		System.out.println("REND = " + FuncoesAuxiliares.getIntNumber(REND.getValue()));
+		System.out.println("IR = " + FuncoesAuxiliares.getIntNumber(IR.getValue()));
 	}
 	
 	private void mudaControles(boolean[] controladores){
