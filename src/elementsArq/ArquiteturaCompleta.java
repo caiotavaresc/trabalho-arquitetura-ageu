@@ -4,7 +4,7 @@ package elementsArq;
 public class ArquiteturaCompleta implements Runnable{
 	private int tamWord;
 	
-	private int timeBetweenInstructions;
+	private int contador; //Contador usado pra esperar normalizar tudo
 	
 	private boolean[] lastDateMemoryReceived;
 	
@@ -77,7 +77,7 @@ public class ArquiteturaCompleta implements Runnable{
 	public ArquiteturaCompleta(){
 		this.tamWord = 32;
 		
-		this.timeBetweenInstructions = 10;
+		this.contador = 0;
 		
 		this.lastDateMemoryReceived = new boolean[this.tamWord];
 		
@@ -139,48 +139,49 @@ public class ArquiteturaCompleta implements Runnable{
 		
 			//T1
 			this.mudaControles(this.memoriaDeControle[8]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[8]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[9]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			
 			//RDADO <- MEMÓRIA
-			
+			System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(this.RDADO.getValue()));
 			//T1
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[3]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
+			System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(this.RDADO.getValue()));
 			
 			//IR <- RDADO
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[10]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			
-			this.executaInstrucao(this.IR);
+			this.executaInstrucao();
 			
-		}catch(InterruptedException e){
+		}catch(Exception e){
 			this.halt = true;
 			System.out.println("Deu Interrupted Exception");
 		}
 	}
 	
-	private void executaInstrucao(Register IR){
-		int number = FuncoesAuxiliares.getIntNumber(IR.getValue());
+	private void executaInstrucao(){
+		int number = FuncoesAuxiliares.getIntNumber(this.IR.getValue());
 		
 		switch(number){
 			case 0:
@@ -227,63 +228,63 @@ public class ArquiteturaCompleta implements Runnable{
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[1]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			
 			//RDADO <- MEM
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[3]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			
 			//E <- RDADO
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[5]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			
 			//R0 <- R0 + E
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[6]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[6]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[7]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			
 			// REND <- PC+1 e PC<-PC+1
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T2
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 			//T3
 			this.mudaControles(this.memoriaDeControle[1]);
-			Thread.sleep(this.timeBetweenInstructions);
+			this.esperaNormalizar();
 		
-		}catch(InterruptedException e){
+		}catch(Exception e){
 			this.halt = true;
 			System.out.println("Deu Interrupted Exception");
 		}
@@ -303,6 +304,7 @@ public class ArquiteturaCompleta implements Runnable{
 		System.out.println("R2 = " + FuncoesAuxiliares.getIntNumber(R2.getValue()));
 		System.out.println("R3 = " + FuncoesAuxiliares.getIntNumber(R3.getValue()));
 		System.out.println("R4 = " + FuncoesAuxiliares.getIntNumber(R4.getValue()));
+		System.out.println("PC = " + FuncoesAuxiliares.getIntNumber(PC.getValue()));
 		System.out.println("A = " + FuncoesAuxiliares.getIntNumber(A.getValue()));
 		System.out.println("B = " + FuncoesAuxiliares.getIntNumber(B.getValue()));
 		System.out.println("C = " + FuncoesAuxiliares.getIntNumber(C.getValue()));
@@ -322,8 +324,6 @@ public class ArquiteturaCompleta implements Runnable{
 			System.out.println("Não está mudando os controladores");
 			return;
 		}
-		
-		boolean teste = true;
 		
 		this.a = controladores[0];
 		this.b = controladores[1];
@@ -363,14 +363,6 @@ public class ArquiteturaCompleta implements Runnable{
 		this.d2 = controladores[29];
 		
 		this.e2 = controladores[30];
-		
-		for(int i=0; i<controladores.length; i++){
-			teste = teste&(!controladores[i]);
-		}
-		
-		if(teste){
-			System.out.println("Dá tudo false");
-		}
 	}
 
 	@Override
@@ -471,6 +463,15 @@ public class ArquiteturaCompleta implements Runnable{
 			
 			if(this.q)
 				this.RDADO.setValue(saidaMux1);
+			
+			this.contador++;
+		}
+	}
+	
+	private void esperaNormalizar(){
+		this.contador = 0;
+		
+		while(this.contador <= 3){
 		}
 	}
 }

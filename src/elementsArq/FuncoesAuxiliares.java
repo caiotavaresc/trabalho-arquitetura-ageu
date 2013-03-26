@@ -64,7 +64,7 @@ public class FuncoesAuxiliares {
 		
 		for(int i=(number.length-1); i>=0; i--){
 			if(number[i]){
-				value += value + Math.pow(2, (number.length -1) - i);
+				value += Math.pow(2, (number.length -1) - i);
 			}
 		}
 		

@@ -9,6 +9,11 @@ public class Main {
 		// TODO Auto-generated method stub
 		ArquiteturaCompleta arquitetura = new ArquiteturaCompleta();
 		
+		int number = 15;
+		
+		System.out.println(FuncoesAuxiliares.getStringWord(FuncoesAuxiliares.getNumber(number, 32)));
+		System.out.println(FuncoesAuxiliares.getIntNumber(FuncoesAuxiliares.getNumber(number, 32)));
+		
 		arquitetura.insereMemoria(100, FuncoesAuxiliares.getNumber(1, 32)); //ADD #CONST, R0
 		arquitetura.insereMemoria(101, FuncoesAuxiliares.getNumber(20, 32)); //#CONST = 20
 		
