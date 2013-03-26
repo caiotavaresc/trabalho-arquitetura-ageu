@@ -120,6 +120,52 @@ public class ArquiteturaCompleta implements Runnable{
 	private void criarMemoriaDeControle(){
 		this.memoriaDeControle = new boolean[1024][32];
 	}
+	
+	private void mudaControles(boolean[] controladores){
+		if(controladores.length != 32){
+			return;
+		}
+		
+		this.a = controladores[0];
+		this.b = controladores[1];
+		this.c = controladores[2];
+		this.d = controladores[3];
+		this.e = controladores[4];
+		this.f = controladores[5];
+		this.g = controladores[6];
+		this.h = controladores[7];
+		
+		this.i = controladores[8];
+		this.j = controladores[9];
+		this.k = controladores[10];
+		this.l = controladores[11];
+		this.m = controladores[12];
+		this.n = controladores[13];
+		this.o = controladores[14];
+		this.p = controladores[15];
+		
+		this.q = controladores[16];
+		this.r = controladores[17];
+		this.s = controladores[18];
+		
+		this.t = controladores[19];
+		this.u = controladores[20];
+		this.v = controladores[21];
+		
+		this.w = controladores[22];
+		this.x = controladores[23];
+		this.y = controladores[24];
+		
+		this.z = controladores[25];
+		
+		this.a2 = controladores[26];
+		this.b2 = controladores[27];
+		this.c2 = controladores[28];
+		this.d2 = controladores[29];
+		this.e2 = controladores[30];
+		
+		this.f2 = controladores[31];
+	}
 
 	@Override
 	public void run() {
