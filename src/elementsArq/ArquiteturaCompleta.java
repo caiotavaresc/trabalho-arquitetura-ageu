@@ -4,6 +4,8 @@ package elementsArq;
 public class ArquiteturaCompleta implements Runnable{
 	private int tamWord;
 	
+	private int timeBetweenInstructions;
+	
 	private boolean[] lastDateMemoryReceived;
 	
 	private boolean[][] memoriaDeControle;
@@ -75,6 +77,8 @@ public class ArquiteturaCompleta implements Runnable{
 	public ArquiteturaCompleta(){
 		this.tamWord = 32;
 		
+		this.timeBetweenInstructions = 10;
+		
 		this.lastDateMemoryReceived = new boolean[this.tamWord];
 		
 		for(int i=0; i<this.lastDateMemoryReceived.length; i++){
@@ -82,6 +86,8 @@ public class ArquiteturaCompleta implements Runnable{
 		}
 		
 		this.criarMemoriaDeControle();
+		
+		this.mudaControles(FuncoesAuxiliares.getNumber(0, 31));
 
 		this.RDADO = new Register(this.tamWord);
 		this.R0 = new Register(this.tamWord);
@@ -133,42 +139,43 @@ public class ArquiteturaCompleta implements Runnable{
 		
 			//T1
 			this.mudaControles(this.memoriaDeControle[8]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[8]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[9]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			
 			//RDADO <- MEMÓRIA
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[3]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			
 			//IR <- RDADO
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[10]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			
 			this.executaInstrucao(this.IR);
 			
 		}catch(InterruptedException e){
 			this.halt = true;
+			System.out.println("Deu Interrupted Exception");
 		}
 	}
 	
@@ -220,64 +227,65 @@ public class ArquiteturaCompleta implements Runnable{
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[1]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			
 			//RDADO <- MEM
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[2]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[3]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			
 			//E <- RDADO
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[4]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[5]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			
 			//R0 <- R0 + E
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[6]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[6]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[7]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			
 			// REND <- PC+1 e PC<-PC+1
 			
 			//T1
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T2
 			this.mudaControles(this.memoriaDeControle[0]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 			//T3
 			this.mudaControles(this.memoriaDeControle[1]);
-			Thread.sleep(1);
+			Thread.sleep(this.timeBetweenInstructions);
 		
 		}catch(InterruptedException e){
 			this.halt = true;
+			System.out.println("Deu Interrupted Exception");
 		}
 		
 		this.buscaInstrucao();
@@ -311,8 +319,11 @@ public class ArquiteturaCompleta implements Runnable{
 	
 	private void mudaControles(boolean[] controladores){
 		if(controladores.length != 31){
+			System.out.println("Não está mudando os controladores");
 			return;
 		}
+		
+		boolean teste = true;
 		
 		this.a = controladores[0];
 		this.b = controladores[1];
@@ -352,6 +363,14 @@ public class ArquiteturaCompleta implements Runnable{
 		this.d2 = controladores[29];
 		
 		this.e2 = controladores[30];
+		
+		for(int i=0; i<controladores.length; i++){
+			teste = teste&(!controladores[i]);
+		}
+		
+		if(teste){
+			System.out.println("Dá tudo false");
+		}
 	}
 
 	@Override
@@ -361,14 +380,27 @@ public class ArquiteturaCompleta implements Runnable{
 			this.mux3Esquerda.setValues(this.RDADO.getValue(), this.R0.getValue(), this.R1.getValue(), this.A.getValue(), this.B.getValue(), this.C.getValue(), this.D.getValue(), this.PC.getValue());
 			this.mux3Direita.setValues(this.R2.getValue(), this.R3.getValue(), this.R4.getValue(), this.E.getValue(), this.F.getValue(), this.G.getValue(), this.H.getValue(), this.I.getValue());
 			
-			boolean[] arraySaidaEsquerda = new boolean[]{this.v, this.w, this.x};
-			boolean[] arraySaidaDireita = new boolean[]{this.s, this.t, this.u};
+			boolean[] arraySaidaEsquerda = new boolean[3];
+			arraySaidaEsquerda[0] = this.v;
+			arraySaidaEsquerda[1] = this.w;
+			arraySaidaEsquerda[2] = this.x;
 			
-			this.objALU.setLados(this.mux3Esquerda.getValue(arraySaidaEsquerda), this.mux3Direita.getValue(arraySaidaDireita));
+			boolean[] arraySaidaDireita = new boolean[3];
+			arraySaidaDireita[0] = this.s;
+			arraySaidaDireita[1] = this.t;
+			arraySaidaDireita[2] = this.u;
 			
+			boolean[] valorEsquerdo = this.mux3Esquerda.getValue(arraySaidaEsquerda);
+			boolean[] valorDireito = this.mux3Direita.getValue(arraySaidaDireita);
 			
+			this.objALU.setLados(valorEsquerdo, valorDireito);
 			
-			boolean[] setFunctionALU = new boolean[]{this.z, this.a2, this.b2, this.c2, this.d2};
+			boolean[] setFunctionALU = new boolean[5];
+			setFunctionALU[0] = this.z;
+			setFunctionALU[1] = this.a2;
+			setFunctionALU[2] = this.b2;
+			setFunctionALU[3] = this.c2;
+			setFunctionALU[4] = this.d2;
 			
 			this.objALU.setFuncao(setFunctionALU);
 			

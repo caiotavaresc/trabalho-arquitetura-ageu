@@ -15,6 +15,11 @@ public class ALU {
 		this.ladoA = new boolean[tamWord];
 		this.ladoB = new boolean[tamWord];
 		
+		for(int i=0; i<this.ladoA.length; i++){
+			this.ladoA[i] = false;
+			this.ladoB[i] = false;
+		}
+		
 		this.especificaFuncao = new boolean[5];
 	}
 	

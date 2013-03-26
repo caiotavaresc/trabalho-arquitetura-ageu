@@ -43,8 +43,7 @@ public class Multiplexador3 {
 		this.entrada5 = number5;
 		this.entrada6 = number6;
 		this.entrada7 = number7;
-		this.entrada8 = number8;
-		
+		this.entrada8 = number8;		
 	}
 	
 	public boolean[] getValue(boolean[] desiredSaida){
@@ -52,7 +51,14 @@ public class Multiplexador3 {
 			return null;
 		}
 		
-		int number = FuncoesAuxiliares.getIntNumber(desiredSaida);
+		boolean[] saida = new boolean[4];
+		saida[0] = false;
+		saida[1] = desiredSaida[0];
+		saida[1] = desiredSaida[1];
+		saida[1] = desiredSaida[2];
+		
+		
+		int number = FuncoesAuxiliares.getIntNumber(saida);
 		
 		switch(number){
 			case 0:
@@ -73,7 +79,7 @@ public class Multiplexador3 {
 				return this.entrada8;
 		}
 		
-		return null;
+		throw new IllegalArgumentException("Retornou null");
 	}
 	
 	private boolean validNumber(boolean[] number){
