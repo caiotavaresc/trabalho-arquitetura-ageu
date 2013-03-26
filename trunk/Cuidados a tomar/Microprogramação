@@ -1,0 +1,7 @@
+Cuidados a se tomar na hora de Microprogramar =====
+
+
+1.
+Não se pode fazer PC <- PC+1. ou REND<-REND+1, e tudo o mais, utilizando essa recursão, pois nesses casos, a informação 
+circula indefinidamente, fazendo o PC receber PC+1 inúmeras vezes, então, antes de fazer isso, o ideal é passar por um
+intermediário, por exemplo: A <- PC+1, e depois PC <- A.

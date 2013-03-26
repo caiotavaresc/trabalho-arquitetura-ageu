@@ -22,7 +22,7 @@ public class Multiplexador1 {
 	
 	public boolean[] getValue(boolean desiredSaida){		
 		
-		if(desiredSaida)
+		if(!desiredSaida)
 			return this.entrada1;
 		else
 			return this.entrada2;

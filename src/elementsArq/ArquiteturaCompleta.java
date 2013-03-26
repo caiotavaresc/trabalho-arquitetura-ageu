@@ -161,7 +161,7 @@ public class ArquiteturaCompleta implements Runnable{
 			System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(this.RDADO.getValue()));
 			
 			//IR <- RDADO
-			
+			System.out.println("IR = " + FuncoesAuxiliares.getIntNumber(this.IR.getValue()));
 			//T1
 			this.mudaControles(this.memoriaDeControle[4]);
 			this.esperaNormalizar();
@@ -171,6 +171,7 @@ public class ArquiteturaCompleta implements Runnable{
 			//T3
 			this.mudaControles(this.memoriaDeControle[10]);
 			this.esperaNormalizar();
+			System.out.println("IR = " + FuncoesAuxiliares.getIntNumber(this.IR.getValue()));
 			
 			this.executaInstrucao();
 			
@@ -399,61 +400,79 @@ public class ArquiteturaCompleta implements Runnable{
 			boolean[] resultFunction = this.objALU.getResult();
 			
 			{
-				if(this.p)
+				if(this.p){
 					this.IR.setValue(resultFunction);
+				}
 				
-				if(this.r)
+				if(this.r){
 					this.REND.setValue(resultFunction);
+				}
 				
-				if(this.o)
+				if(this.o){
 					this.I.setValue(resultFunction);
+				}
 				
-				if(this.n)
+				if(this.n){
 					this.H.setValue(resultFunction);
+				}
 				
-				if(this.m)
+				if(this.m){
 					this.G.setValue(resultFunction);
+				}
 				
-				if(this.l)
+				if(this.l){
 					this.F.setValue(resultFunction);
+				}
 				
-				if(this.k)
+				if(this.k){
 					this.E.setValue(resultFunction);
+				}
 				
-				if(this.j)
+				if(this.j){
 					this.R4.setValue(resultFunction);
+				}
 				
-				if(this.i)
+				if(this.i){
 					this.R3.setValue(resultFunction);
+				}
 				
-				if(this.h)
+				if(this.h){
 					this.R2.setValue(resultFunction);
+				}
 				
 				
-				if(this.g)
+				if(this.g){
 					this.PC.setValue(resultFunction);
+				}
 				
-				if(this.f)
+				if(this.f){
 					this.D.setValue(resultFunction);
+				}
 				
-				if(this.e)
+				if(this.e){
 					this.C.setValue(resultFunction);
+				}
 				
-				if(this.d)
+				if(this.d){
 					this.B.setValue(resultFunction);
+				}
 				
-				if(this.c)
+				if(this.c){
 					this.A.setValue(resultFunction);
+				}
 				
-				if(this.b)
+				if(this.b){
 					this.R1.setValue(resultFunction);
+				}
 				
-				if(this.a)
-					this.R0.setValue(resultFunction);	
+				if(this.a){
+					this.R0.setValue(resultFunction);
+				}
 			}
 			
-			if(this.e2)
+			if(this.e2){
 				this.memory.setWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()), this.RDADO.getValue()); // 1 - Escrita <=> 0 - Leitura
+			}
 			else
 				this.lastDateMemoryReceived = this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.REND.getValue()));
 			
@@ -461,8 +480,9 @@ public class ArquiteturaCompleta implements Runnable{
 			
 			boolean[] saidaMux1 = this.mux1RDado.getValue(this.y);
 			
-			if(this.q)
+			if(this.q){
 				this.RDADO.setValue(saidaMux1);
+			}
 			
 			this.contador++;
 		}
