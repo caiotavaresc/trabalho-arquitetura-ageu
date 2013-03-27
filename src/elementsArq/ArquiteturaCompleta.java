@@ -124,6 +124,10 @@ public class ArquiteturaCompleta implements Runnable{
 		this.memory.setWord(position, valor);
 	}
 	
+	public boolean[] getMemoria(int position){
+		return this.memory.getWord(position);
+	}
+	
 	public void executaPrograma(boolean[] posicaoInicial){
 		if(posicaoInicial.length != 32)
 			return;
@@ -147,7 +151,6 @@ public class ArquiteturaCompleta implements Runnable{
 			this.esperaNormalizar();
 			
 			//RDADO <- MEMÓRIA
-			System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(this.RDADO.getValue()));
 			//T1
 			this.mudaControles(this.memoriaDeControle[2]);
 			this.esperaNormalizar();
@@ -157,10 +160,8 @@ public class ArquiteturaCompleta implements Runnable{
 			//T3
 			this.mudaControles(this.memoriaDeControle[3]);
 			this.esperaNormalizar();
-			System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(this.RDADO.getValue()));
 			
 			//IR <- RDADO
-			System.out.println("IR = " + FuncoesAuxiliares.getIntNumber(this.IR.getValue()));
 			//T1
 			this.mudaControles(this.memoriaDeControle[4]);
 			this.esperaNormalizar();
@@ -170,7 +171,6 @@ public class ArquiteturaCompleta implements Runnable{
 			//T3
 			this.mudaControles(this.memoriaDeControle[10]);
 			this.esperaNormalizar();
-			System.out.println("IR = " + FuncoesAuxiliares.getIntNumber(this.IR.getValue()));
 			
 			this.executaInstrucao();
 			
@@ -189,6 +189,10 @@ public class ArquiteturaCompleta implements Runnable{
 				break;
 			case 1:
 				this.addConstR0();
+				break;
+			case 2:
+				this.addConstEndR0();
+				break;
 		}
 	}
 	
@@ -228,11 +232,23 @@ public class ArquiteturaCompleta implements Runnable{
 		//this.memoriaDeControle[11]
 		this.memoriaDeControle[13] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000000000000110000000", 2), 31);
 		
+		//REND <- R0
+		this.memoriaDeControle[14] = FuncoesAuxiliares.getNumber(Integer.parseInt("0010000000", 2), 31);
+		this.memoriaDeControle[15] = FuncoesAuxiliares.getNumber(Integer.parseInt("10000010000000", 2), 31);
+		
+		//A <- RDADO + E
+		this.memoriaDeControle[16] = FuncoesAuxiliares.getNumber(Integer.parseInt("0110000001100", 2), 31);
+		this.memoriaDeControle[17] = FuncoesAuxiliares.getNumber(Integer.parseInt("10000000000000000110000001100", 2), 31);
+		
+		//RDADO <- A
+		this.memoriaDeControle[18] = FuncoesAuxiliares.getNumber(Integer.parseInt("0111000000", 2), 31);
+		this.memoriaDeControle[19] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000111000000", 2), 31);
+		
+		//MEMÓRIA <- RDADO
+		this.memoriaDeControle[20] = FuncoesAuxiliares.getNumber(Integer.parseInt("1", 2), 31);
 	}
 	
 	private void addConstR0(){		
-		
-			
 		// REND <- PC+1 e A<-PC+1
 		//T1
 		this.mudaControles(this.memoriaDeControle[0]);
@@ -299,7 +315,7 @@ public class ArquiteturaCompleta implements Runnable{
 		this.mudaControles(this.memoriaDeControle[13]);
 		this.esperaNormalizar();
 			
-		// REND <- PC+1 e A<-PC+1
+		//REND <- PC+1 e A<-PC+1
 		//T1
 		this.mudaControles(this.memoriaDeControle[0]);
 		this.esperaNormalizar();
@@ -321,6 +337,129 @@ public class ArquiteturaCompleta implements Runnable{
 		this.mudaControles(this.memoriaDeControle[12]);
 		this.esperaNormalizar();
 		
+		this.buscaInstrucao();
+	}
+	
+	private void addConstEndR0(){
+		//REND <- PC+1 A<- PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+		
+		//PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+		
+		//RDADO <- MEM
+		//T1
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[3]);
+		this.esperaNormalizar();
+		
+		//E <- RDADO
+		//T1
+		this.mudaControles(this.memoriaDeControle[4]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[4]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[5]);
+		this.esperaNormalizar();
+		
+		System.out.println("REND = " + FuncoesAuxiliares.getIntNumber(this.REND.getValue()));
+		//REND <- R0
+		//T1
+		this.mudaControles(this.memoriaDeControle[14]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[14]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[15]);
+		this.esperaNormalizar();
+		System.out.println("REND = " + FuncoesAuxiliares.getIntNumber(this.REND.getValue()));
+		
+		//RDADO <- MEMÓRIA
+		//T1
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[3]);
+		this.esperaNormalizar();
+		
+		//A <- RDADO + E
+		//T1
+		this.mudaControles(this.memoriaDeControle[16]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[16]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[17]);
+		this.esperaNormalizar();
+		
+		System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(this.RDADO.getValue()));
+		//RDADO <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[18]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[18]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[19]);
+		this.esperaNormalizar();
+		System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(this.RDADO.getValue()));
+		
+		//MEMORIA <- RDADO
+		//T1, T2 e T3
+		this.mudaControles(this.memoriaDeControle[20]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+		
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+				
 		this.buscaInstrucao();
 	}
 	
@@ -349,6 +488,7 @@ public class ArquiteturaCompleta implements Runnable{
 		System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(RDADO.getValue()));
 		System.out.println("REND = " + FuncoesAuxiliares.getIntNumber(REND.getValue()));
 		System.out.println("IR = " + FuncoesAuxiliares.getIntNumber(IR.getValue()));
+		System.out.println("Memória["+FuncoesAuxiliares.getIntNumber(this.R0.getValue())+ "] = " + FuncoesAuxiliares.getIntNumber(this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.R0.getValue()))));
 	}
 	
 	private void mudaControles(boolean[] controladores){
