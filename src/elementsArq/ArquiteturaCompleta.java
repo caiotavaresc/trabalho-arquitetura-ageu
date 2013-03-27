@@ -491,7 +491,7 @@ public class ArquiteturaCompleta implements Runnable{
 	private void esperaNormalizar(){
 		this.contador = 0;
 		
-		while(this.contador <= 3){
+		while(this.contador <= 2){
 		}
 	}
 }
