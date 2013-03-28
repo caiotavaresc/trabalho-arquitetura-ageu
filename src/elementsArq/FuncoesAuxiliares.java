@@ -61,11 +61,21 @@ public class FuncoesAuxiliares {
 	public static int getIntNumber(boolean[] number){
 		
 		int value = 0;
+		boolean negative = false;
+		
+		if(number[0]){
+			number = FuncoesAuxiliares.getNeg(number);
+			negative = true;
+		}
 		
 		for(int i=(number.length-1); i>=0; i--){
 			if(number[i]){
 				value += Math.pow(2, (number.length -1) - i);
 			}
+		}
+		
+		if(negative){
+			return -value;
 		}
 		
 		return value;

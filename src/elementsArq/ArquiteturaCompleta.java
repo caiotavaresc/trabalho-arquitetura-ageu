@@ -538,10 +538,6 @@ public class ArquiteturaCompleta implements Runnable{
 	}
 	
 	private void addR2R0(){
-		this.R2.setValue(FuncoesAuxiliares.getNumber(56, 32));
-		
-		System.out.println("R0 = " + FuncoesAuxiliares.getIntNumber(this.R0.getValue()));
-		System.out.println("A = " + FuncoesAuxiliares.getIntNumber(this.A.getValue()));
 		//A <- R0+R2
 		//T1
 		this.mudaControles(this.memoriaDeControle[25]);
@@ -552,8 +548,6 @@ public class ArquiteturaCompleta implements Runnable{
 		//T3
 		this.mudaControles(this.memoriaDeControle[26]);
 		this.esperaNormalizar();
-		System.out.println("R0 = " + FuncoesAuxiliares.getIntNumber(this.R0.getValue()));
-		System.out.println("A = " + FuncoesAuxiliares.getIntNumber(this.A.getValue()));
 		
 		//R0 <- A
 		//T1
