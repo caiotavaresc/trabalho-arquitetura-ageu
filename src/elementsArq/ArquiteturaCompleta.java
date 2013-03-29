@@ -242,6 +242,10 @@ public class ArquiteturaCompleta implements Runnable{
 			case 15:
 				this.addConstR1();
 				break;
+			
+			case 16:
+				this.addR0R1();
+				break;
 		}
 	}
 	
@@ -339,6 +343,10 @@ public class ArquiteturaCompleta implements Runnable{
 		//R1 <- A
 		//this.memoriaDeControle[11]
 		this.memoriaDeControle[41] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000000000000110000000", 2), 31);
+		
+		//E <- R0
+		//this.memoriaDeControle[14] = FuncoesAuxiliares.getNumber(Integer.parseInt("0010000000", 2), 31);
+		this.memoriaDeControle[42] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000010000000", 2), 31);
 	}
 	
 	private void addConstR0(){		
@@ -1581,6 +1589,65 @@ public class ArquiteturaCompleta implements Runnable{
 		this.mudaControles(this.memoriaDeControle[41]);
 		this.esperaNormalizar();
 
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+			
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+		
+		this.buscaInstrucao();
+	}
+	
+	private void addR0R1(){
+		//E <- R0
+		//T1
+		this.mudaControles(this.memoriaDeControle[14]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[14]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[42]);
+		this.esperaNormalizar();
+		
+		//A <- R1+E
+		//T1
+		this.mudaControles(this.memoriaDeControle[39]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[39]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[40]);
+		this.esperaNormalizar();
+		
+		//R1 <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[41]);
+		this.esperaNormalizar();
+		
 		//REND <- PC+1 e A<-PC+1
 		//T1
 		this.mudaControles(this.memoriaDeControle[0]);
