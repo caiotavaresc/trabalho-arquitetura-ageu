@@ -49,6 +49,8 @@ public class Main {
 		arquitetura.insereMemoria(125, FuncoesAuxiliares.getNumber(16, 32)); //ADD #CONST,(R1)
 		arquitetura.insereMemoria(126, FuncoesAuxiliares.getNumber(32, 32)); //#CONST = 32
 		
+		arquitetura.insereMemoria(127, FuncoesAuxiliares.getNumber(21, 32)); //ADD (R0),(R1)
+		arquitetura.insereMemoria(128, FuncoesAuxiliares.getNumber(22, 32)); //ADD (R2),(R1)
 		
 		Thread ligaComputador = new Thread(arquitetura);
 		
