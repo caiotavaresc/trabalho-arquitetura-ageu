@@ -30,8 +30,12 @@ public class Main {
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(43, 32)); //ADD #CONST, R3
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(1, 32)); //#CONST = 1
 		
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(57, 32)); //ADD #CONST, R4
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(1, 32)); //#CONST = 1
+		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(84, 32)); //SUB R2,R1
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(85, 32)); //SUB R3,R1
+		//arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(86, 32)); //SUB R4,R1
 		
 		
 		
