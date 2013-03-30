@@ -35,6 +35,7 @@ public class Main {
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(13, 32)); //#CONST = 13
 		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(97, 32)); //SUB R0, R2
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(98, 32)); //SUB R1, R2
 		
 		
 		
