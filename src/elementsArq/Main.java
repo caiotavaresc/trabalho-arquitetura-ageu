@@ -19,11 +19,18 @@ public class Main {
 		arquitetura.insereMemoria(x, FuncoesAuxiliares.getNumber(15, 32)); //ADD #CONST, R1
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(40, 32)); //#CONST = 40
 		
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(1, 32)); //ADD #CONST, R0
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(40, 32)); //#CONST = 40
+		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(43, 32)); //ADD #CONST, R3
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(300, 32)); //#CONST = 300
 		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(109, 32)); //SUB #CONST,R3
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(55, 32)); //SUB #CONST,55
+		
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(111, 32)); //SUB #CONST,R3
+		
+		
 		
 		
 		
