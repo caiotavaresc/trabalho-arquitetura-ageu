@@ -632,6 +632,10 @@ public class ArquiteturaCompleta implements Runnable{
 				this.subR0R3();
 				break;
 			
+			case 112:
+				this.subR1R3();
+				break;
+			
 			default:
 				this.halt();
 				break;
@@ -856,6 +860,10 @@ public class ArquiteturaCompleta implements Runnable{
 		//A <- R3 - R0
 		this.memoriaDeControle[95] = FuncoesAuxiliares.getNumber(Integer.parseInt("0010010010000", 2), 31);
 		this.memoriaDeControle[96] = FuncoesAuxiliares.getNumber(Integer.parseInt("10000000000000000010010010000", 2), 31);
+		
+		//A <- R3 - R1
+		this.memoriaDeControle[97] = FuncoesAuxiliares.getNumber(Integer.parseInt("0010100010000", 2), 31);
+		this.memoriaDeControle[98] = FuncoesAuxiliares.getNumber(Integer.parseInt("10000000000000000010100010000", 2), 31);
 	}
 	
 	
@@ -10030,6 +10038,54 @@ public class ArquiteturaCompleta implements Runnable{
 		this.esperaNormalizar();
 		//T3
 		this.mudaControles(this.memoriaDeControle[96]);
+		this.esperaNormalizar();
+		
+		//R3 <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[61]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+		
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+				
+		this.buscaInstrucao();		
+	}
+	
+	private void subR1R3(){
+		//A <- R3 - R0
+		//T1
+		this.mudaControles(this.memoriaDeControle[97]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[97]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[98]);
 		this.esperaNormalizar();
 		
 		//R3 <- A
