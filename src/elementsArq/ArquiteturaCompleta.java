@@ -624,6 +624,10 @@ public class ArquiteturaCompleta implements Runnable{
 				this.subConstR3();
 				break;
 			
+			case 110:
+				this.subConstEndR3();
+				break;
+			
 			default:
 				this.halt();
 				break;
