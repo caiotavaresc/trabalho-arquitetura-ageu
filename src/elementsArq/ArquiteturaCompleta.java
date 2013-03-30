@@ -748,6 +748,10 @@ public class ArquiteturaCompleta implements Runnable{
 				this.subEndR3R4();
 				break;
 			
+			case 141:
+				this.movConstR0();
+				break;
+			
 			default:
 				this.halt();
 				break;
@@ -1008,6 +1012,10 @@ public class ArquiteturaCompleta implements Runnable{
 		//E <- R4 - A
 		this.memoriaDeControle[111] = FuncoesAuxiliares.getNumber(Integer.parseInt("0100110010000", 2), 31);
 		this.memoriaDeControle[112] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000100110010000", 2), 31);
+		
+		//R0 <- RDADO
+		//this.memoriaDeControle[4]
+		this.memoriaDeControle[113] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000000000000000000000", 2), 31);
 	}
 	
 	
@@ -12439,12 +12447,81 @@ public class ArquiteturaCompleta implements Runnable{
 		this.buscaInstrucao();	
 	}
 	
+	private void movConstR0(){
+		// REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+			
+		//PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		//RDADO <- MEM
+		//T1
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[3]);
+		this.esperaNormalizar();
+		
+		//R0 <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[4]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[4]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[113]);
+		this.esperaNormalizar();
+			
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+			
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+		
+		this.buscaInstrucao();		
+	}
+	
 	private void halt(){
 		this.halt = true;
 		
 		this.showRegistradores();
 	}
-	
 	
 	private void showRegistradores(){
 		System.out.println("R0 = " + FuncoesAuxiliares.getIntNumber(R0.getValue()));
