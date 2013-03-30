@@ -421,267 +421,299 @@ public class ArquiteturaCompleta implements Runnable{
 				break;
 			
 			case 59:
-				this.addEndR0EndR4();
+				this.addR0R4();
 				break;
 			
 			case 60:
-				this.addEndR1EndR4();
+				this.addR1R4();
 				break;
 			
 			case 61:
-				this.addEndR2EndR4();
+				this.addR2R4();
 				break;
-			
+				
 			case 62:
-				this.addEndR3EndR4();
+				this.addR3R4();
 				break;
-			
+				
 			case 63:
-				this.addEndR0R4();
+				this.addEndR0EndR4();
 				break;
 			
 			case 64:
-				this.addEndR1R4();
+				this.addEndR1EndR4();
 				break;
-				
+			
 			case 65:
-				this.addEndR2R4();
+				this.addEndR2EndR4();
 				break;
 			
 			case 66:
-				this.addEndR3R4();
+				this.addEndR3EndR4();
 				break;
 			
 			case 67:
-				this.subConstR0();
+				this.addEndR0R4();
 				break;
 			
 			case 68:
-				this.subConstEndR0();
+				this.addEndR1R4();
 				break;
-			
+				
 			case 69:
-				this.subR1R0();
+				this.addEndR2R4();
 				break;
 			
 			case 70:
-				this.subR2R0();
+				this.addEndR3R4();
 				break;
 			
 			case 71:
-				this.subR3R0();
+				this.subConstR0();
 				break;
 			
 			case 72:
-				this.subR4R0();
+				this.subConstEndR0();
 				break;
 			
 			case 73:
-				this.subEndR1EndR0();
+				this.subR1R0();
 				break;
 			
 			case 74:
-				this.subEndR2EndR0();
+				this.subR2R0();
 				break;
 			
 			case 75:
-				this.subEndR3EndR0();
+				this.subR3R0();
 				break;
 			
 			case 76:
-				this.subEndR4EndR0();
+				this.subR4R0();
 				break;
 			
 			case 77:
-				this.subEndR1R0();
+				this.subEndR1EndR0();
 				break;
 			
 			case 78:
-				this.subEndR2R0();
+				this.subEndR2EndR0();
 				break;
 			
 			case 79:
-				this.subEndR3R0();
+				this.subEndR3EndR0();
 				break;
 			
 			case 80:
-				this.subEndR4R0();
+				this.subEndR4EndR0();
 				break;
 			
 			case 81:
-				this.subConstR1();
+				this.subEndR1R0();
 				break;
 			
 			case 82:
-				this.subConstEndR1();
+				this.subEndR2R0();
 				break;
 			
 			case 83:
-				this.subR0R1();
+				this.subEndR3R0();
 				break;
 			
 			case 84:
-				this.subR2R1();
+				this.subEndR4R0();
 				break;
 			
 			case 85:
-				this.subR3R1();
+				this.subConstR1();
 				break;
 			
 			case 86:
-				this.subR4R1();
+				this.subConstEndR1();
 				break;
 			
 			case 87:
-				this.subEndR0EndR1();
+				this.subR0R1();
 				break;
 			
 			case 88:
-				this.subEndR2EndR1();
+				this.subR2R1();
 				break;
-				
+			
 			case 89:
-				this.subEndR3EndR1();
+				this.subR3R1();
 				break;
 			
 			case 90:
-				this.subEndR4EndR1();
+				this.subR4R1();
 				break;
 			
 			case 91:
-				this.subEndR0R1();
+				this.subEndR0EndR1();
 				break;
 			
 			case 92:
-				this.subEndR2R1();
+				this.subEndR2EndR1();
 				break;
-			
+				
 			case 93:
-				this.subEndR3R1();
+				this.subEndR3EndR1();
 				break;
 			
 			case 94:
-				this.subEndR4R1();
+				this.subEndR4EndR1();
 				break;
 			
 			case 95:
-				this.subConstR2();
+				this.subEndR0R1();
 				break;
 			
 			case 96:
-				this.subConstEndR2();
+				this.subEndR2R1();
 				break;
 			
 			case 97:
-				this.subR0R2();
+				this.subEndR3R1();
 				break;
-				
+			
 			case 98:
-				this.subR1R2();
+				this.subEndR4R1();
 				break;
 			
 			case 99:
-				this.subR3R2();
+				this.subConstR2();
 				break;
 			
 			case 100:
-				this.subR4R2();
+				this.subConstEndR2();
 				break;
 			
 			case 101:
-				this.subEndR0EndR2();
+				this.subR0R2();
 				break;
-			
+				
 			case 102:
-				this.subEndR1EndR2();
+				this.subR1R2();
 				break;
 			
 			case 103:
-				this.subEndR3EndR2();
+				this.subR3R2();
 				break;
 			
 			case 104:
-				this.subEndR4EndR2();
+				this.subR4R2();
 				break;
 			
 			case 105:
-				this.subEndR0R2();
+				this.subEndR0EndR2();
 				break;
 			
 			case 106:
-				this.subEndR1R2();
+				this.subEndR1EndR2();
 				break;
 			
 			case 107:
-				this.subEndR3R2();
+				this.subEndR3EndR2();
 				break;
 			
 			case 108:
-				this.subEndR4R2();
+				this.subEndR4EndR2();
 				break;
 			
 			case 109:
-				this.subConstR3();
+				this.subEndR0R2();
 				break;
 			
 			case 110:
-				this.subConstEndR3();
+				this.subEndR1R2();
 				break;
-				
+			
 			case 111:
-				this.subR0R3();
+				this.subEndR3R2();
 				break;
 			
 			case 112:
-				this.subR1R3();
+				this.subEndR4R2();
 				break;
 			
 			case 113:
-				this.subR2R3();
+				this.subConstR3();
 				break;
 			
 			case 114:
-				this.subR4R3();
+				this.subConstEndR3();
 				break;
-			
+				
 			case 115:
-				this.subEndR0EndR3();
+				this.subR0R3();
 				break;
 			
 			case 116:
-				this.subEndR1EndR3();
+				this.subR1R3();
 				break;
 			
 			case 117:
-				this.subEndR2EndR3();
+				this.subR2R3();
 				break;
 			
 			case 118:
-				this.subEndR4EndR3();
+				this.subR4R3();
 				break;
 			
 			case 119:
-				this.subEndR0R3();
+				this.subEndR0EndR3();
 				break;
-				
+			
 			case 120:
-				this.subEndR1R3();
+				this.subEndR1EndR3();
 				break;
-				
+			
 			case 121:
-				this.subEndR2R3();
+				this.subEndR2EndR3();
 				break;
 			
 			case 122:
-				this.subEndR4R3();
+				this.subEndR4EndR3();
 				break;
 			
 			case 123:
+				this.subEndR0R3();
+				break;
+				
+			case 124:
+				this.subEndR1R3();
+				break;
+				
+			case 125:
+				this.subEndR2R3();
+				break;
+			
+			case 126:
+				this.subEndR4R3();
+				break;
+			
+			case 127:
 				this.subConstR4();
 				break;
 			
-			case 124:
+			case 128:
 				this.subConstEndR4();
+				break;
+			
+			case 129:
+				this.subR0R4();
+				break;
+			
+			case 130:
+				this.subR1R4();
+				break;
+			
+			case 131:
+				this.subR2R4();
+				break;
+				
+			case 132:
+				this.subR3R4();
 				break;
 			
 			default:
@@ -921,7 +953,29 @@ public class ArquiteturaCompleta implements Runnable{
 		this.memoriaDeControle[101] = FuncoesAuxiliares.getNumber(Integer.parseInt("0100000010000", 2), 31);
 		this.memoriaDeControle[102] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000100000010000", 2), 31);
 		
+		//R4 <- A
+		//this.memoriaDeControle[11]
+		this.memoriaDeControle[103] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000000110000000", 2), 31);
 		
+		//R4 <- E
+		//this.memoriaDeControle[51] = FuncoesAuxiliares.getNumber(Integer.parseInt("0110000000110", 2), 31);
+		this.memoriaDeControle[104] = FuncoesAuxiliares.getNumber(Integer.parseInt("1000000000110000000110", 2), 31);
+		
+		//A <- R4 - R0
+		this.memoriaDeControle[105] = FuncoesAuxiliares.getNumber(Integer.parseInt("0100010010000", 2), 31);
+		this.memoriaDeControle[106] = FuncoesAuxiliares.getNumber(Integer.parseInt("10000000000000000100010010000", 2), 31);
+		
+		//A <- R1 - R4
+		this.memoriaDeControle[107] = FuncoesAuxiliares.getNumber(Integer.parseInt("0100100010000", 2), 31);
+		this.memoriaDeControle[108] = FuncoesAuxiliares.getNumber(Integer.parseInt("10000000000000000100100010000", 2), 31);
+		
+		//E <- A - R2
+		this.memoriaDeControle[109] = FuncoesAuxiliares.getNumber(Integer.parseInt("0000110001110", 2), 31);
+		this.memoriaDeControle[110] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000110001110", 2), 31);
+		
+		//E <- R4 - A
+		this.memoriaDeControle[111] = FuncoesAuxiliares.getNumber(Integer.parseInt("0100110010000", 2), 31);
+		this.memoriaDeControle[112] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000100110010000", 2), 31);
 	}
 	
 	
@@ -5706,6 +5760,220 @@ public class ArquiteturaCompleta implements Runnable{
 		this.esperaNormalizar();
 				
 		this.buscaInstrucao();		
+	}
+	
+	private void addR0R4(){
+		//A <- R0 + R4
+		//T1
+		this.mudaControles(this.memoriaDeControle[29]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[29]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[30]);
+		this.esperaNormalizar();
+		
+		//R4 <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[103]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();
+	}
+	
+	private void addR1R4(){
+		//A <- R1 + R4
+		//T1
+		this.mudaControles(this.memoriaDeControle[47]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[47]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[48]);
+		this.esperaNormalizar();
+		
+		//R4 <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[103]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();
+	}
+	
+	private void addR2R4(){
+		//A <- R4
+		//T1
+		this.mudaControles(this.memoriaDeControle[37]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[37]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[57]);
+		this.esperaNormalizar();
+		
+		//E <- A+R2
+		//T1
+		this.mudaControles(this.memoriaDeControle[55]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[55]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[56]);
+		this.esperaNormalizar();
+		
+		//R4 <- E
+		//T1
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[104]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();
+	}
+	
+	private void addR3R4(){
+		//A <- R3
+		//T1
+		this.mudaControles(this.memoriaDeControle[35]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[35]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[54]);
+		this.esperaNormalizar();
+		
+		//E <- A+R4
+		//T1
+		this.mudaControles(this.memoriaDeControle[62]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[62]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[63]);
+		this.esperaNormalizar();
+		
+		//R4 <- E
+		//T1
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[104]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();
 	}
 	
 	private void addEndR0EndR4(){
@@ -11210,6 +11478,220 @@ public class ArquiteturaCompleta implements Runnable{
 		this.esperaNormalizar();
 				
 		this.buscaInstrucao();		
+	}
+	
+	private void subR0R4(){
+		//A <- R4 - R0
+		//T1
+		this.mudaControles(this.memoriaDeControle[105]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[105]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[106]);
+		this.esperaNormalizar();
+		
+		//R4 <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[103]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();	
+	}
+	
+	private void subR1R4(){
+		//A <- R4 - R1
+		//T1
+		this.mudaControles(this.memoriaDeControle[107]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[107]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[108]);
+		this.esperaNormalizar();
+		
+		//R4 <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[103]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();		
+	}
+	
+	private void subR2R4(){
+		//A <- R4
+		//T1
+		this.mudaControles(this.memoriaDeControle[37]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[37]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[57]);
+		this.esperaNormalizar();
+		
+		//E <- A-R2
+		//T1
+		this.mudaControles(this.memoriaDeControle[109]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[109]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[110]);
+		this.esperaNormalizar();
+		
+		//R4 <- E
+		//T1
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[104]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();		
+	}
+	
+	private void subR3R4(){
+		//A <- R3
+		//T1
+		this.mudaControles(this.memoriaDeControle[35]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[35]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[54]);
+		this.esperaNormalizar();
+		
+		//E <- R4 - A
+		//T1
+		this.mudaControles(this.memoriaDeControle[111]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[111]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[112]);
+		this.esperaNormalizar();
+		
+		//R4 <- E
+		//T1
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[104]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+										
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		this.buscaInstrucao();	
 	}
 	
 	private void halt(){
