@@ -19,6 +19,9 @@ public class Main {
 		arquitetura.insereMemoria(x, FuncoesAuxiliares.getNumber(15, 32)); //ADD #CONST, R1
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(40, 32)); //#CONST = 40
 		
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(29, 32)); //ADD #CONST, R2
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(40, 32)); //#CONST = 40
+		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(1, 32)); //ADD #CONST, R0
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(40, 32)); //#CONST = 40
 		
@@ -30,6 +33,7 @@ public class Main {
 		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(111, 32)); //SUB R0,R3
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(112, 32)); //SUB R1,R3
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(113, 32)); //SUB R2,R3
 		
 		
 		
