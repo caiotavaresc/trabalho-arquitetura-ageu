@@ -85,10 +85,16 @@ public class Main {
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(57, 32)); //ADD #CONST,R4
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(20, 32)); //ADD #CONST
 		
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(58, 32)); //ADD #CONST,(R4)
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(31, 32)); //ADD #CONST
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(63, 32)); //ADD (R0),R4
 		
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(59, 32)); //ADD #CONST,(R4)
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(59, 32)); //ADD (R0),(R4)
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(60, 32)); //ADD (R1),(R4)
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(61, 32)); //ADD (R2),(R4)
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(62, 32)); //ADD (R3),(R4)
+		
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(58, 32)); //ADD #CONST,(R4)
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(11, 32)); //ADD #CONST,(R4)
+		
 		
 		Thread ligaComputador = new Thread(arquitetura);
 		
