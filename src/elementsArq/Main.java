@@ -36,6 +36,7 @@ public class Main {
 		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(97, 32)); //SUB R0, R2
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(98, 32)); //SUB R1, R2
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(99, 32)); //SUB R3, R2
 		
 		
 		
