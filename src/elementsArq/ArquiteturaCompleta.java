@@ -676,6 +676,10 @@ public class ArquiteturaCompleta implements Runnable{
 				this.subEndR4R3();
 				break;
 			
+			case 123:
+				this.subConstR4();
+				break;
+			
 			default:
 				this.halt();
 				break;
@@ -908,6 +912,12 @@ public class ArquiteturaCompleta implements Runnable{
 		//E <- A - R2
 		this.memoriaDeControle[99] = FuncoesAuxiliares.getNumber(Integer.parseInt("0000110001110", 2), 31);
 		this.memoriaDeControle[100] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000000110001110", 2), 31);
+		
+		//E <- R4 - RDADO
+		this.memoriaDeControle[101] = FuncoesAuxiliares.getNumber(Integer.parseInt("0100000010000", 2), 31);
+		this.memoriaDeControle[102] = FuncoesAuxiliares.getNumber(Integer.parseInt("100000000100000010000", 2), 31);
+		
+		
 	}
 	
 	
@@ -10996,6 +11006,87 @@ public class ArquiteturaCompleta implements Runnable{
 		this.esperaNormalizar();
 		
 		this.buscaInstrucao();	
+	}
+	
+	private void subConstR4(){
+		// REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+			
+		//PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+
+		//RDADO <- MEM
+		//T1
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[2]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[3]);
+		this.esperaNormalizar();
+		
+		//E <- R4 - RDADO
+		//T1
+		this.mudaControles(this.memoriaDeControle[101]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[101]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[102]);
+		this.esperaNormalizar();
+		
+		//R4 <- E
+		//T1
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[51]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[66]);
+		this.esperaNormalizar();
+		
+		//REND <- PC+1 e A<-PC+1
+		//T1
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[0]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[1]);
+		this.esperaNormalizar();
+			
+		// PC <- A
+		//T1
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T2
+		this.mudaControles(this.memoriaDeControle[11]);
+		this.esperaNormalizar();
+		//T3
+		this.mudaControles(this.memoriaDeControle[12]);
+		this.esperaNormalizar();
+		
+		this.buscaInstrucao();		
 	}
 	
 	private void halt(){
