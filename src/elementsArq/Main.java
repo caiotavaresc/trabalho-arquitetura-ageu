@@ -19,24 +19,11 @@ public class Main {
 		arquitetura.insereMemoria(x, FuncoesAuxiliares.getNumber(15, 32)); //ADD #CONST, R1
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(40, 32)); //#CONST = 40
 		
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(1, 32)); //SUB #CONST, R0
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(34, 32)); //#CONST = 34		
-		
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(81, 32)); //SUB #CONST, R1
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(34, 32)); //#CONST = 34
-		
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(29, 32)); //ADD #CONST, R2
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(70, 32)); //#CONST = 70
-		
 		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(43, 32)); //ADD #CONST, R3
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(1, 32)); //#CONST = 1
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(300, 32)); //#CONST = 300
 		
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(95, 32)); //SUB #CONST, R2
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(13, 32)); //#CONST = 13
-		
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(97, 32)); //SUB R0, R2
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(98, 32)); //SUB R1, R2
-		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(99, 32)); //SUB R3, R2
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(109, 32)); //SUB #CONST,R3
+		arquitetura.insereMemoria(++x, FuncoesAuxiliares.getNumber(55, 32)); //SUB #CONST,55
 		
 		
 		
