@@ -29,7 +29,7 @@ public class Multiplexador1 {
 	
 	}
 	
-	private boolean validNumber(boolean[] number){
+	private boolean validNumber(boolean[] number){		
 		if(number.length != this.entrada1.length){
 			return false;
 		}

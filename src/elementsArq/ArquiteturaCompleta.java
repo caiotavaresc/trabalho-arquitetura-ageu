@@ -176,1607 +176,157 @@ public class ArquiteturaCompleta implements Runnable{
 	private void executaInstrucao(){		
 		int number = FuncoesAuxiliares.getIntNumber(this.IR.getValue());
 		
-		switch(number){
+		if(number == 0)
+		{
+			this.halt();
+			return;
+		}
+		
+
+		OperationBetween operation;
+		Registrador type1;
+		Registrador type2;
+		
+		int espacoParaOperacoes = 200;
+		int espacoParaRegistrador = 20;
+		
+		int i = number/espacoParaOperacoes;
+		
+		if(number >= 6*espacoParaOperacoes){
+			return;
+		}
+		
+		switch(i){
 			case 0:
-				this.halt();
+				operation = OperationBetween.ADD;
 				break;
 			
 			case 1:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				operation = OperationBetween.SUB;
 				break;
 				
 			case 2:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				operation = OperationBetween.MOV;
 				break;
 				
 			case 3:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				operation = OperationBetween.CMP;
 				break;
 				
 			case 4:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				operation = OperationBetween.AND;
 				break;
 				
 			case 5:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				operation = OperationBetween.OR;
+				break;
+			
+			default:
+				operation = OperationBetween.ADD;
 				break;				
-				
+		}
+		
+		int j = (number%espacoParaOperacoes)%espacoParaRegistrador;
+		
+		switch(j){
+			case 1:
+				type1 = Registrador.Const;
+				break;
+			
+			case 2:
+				type1 = Registrador.R0;
+				break;
+			
+			case 3:
+				type1 = Registrador.R1;
+				break;
+			
+			case 4:
+				type1 = Registrador.R2;
+				break;
+			
+			case 5:
+				type1 = Registrador.R3;
+				break;
+			
 			case 6:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				type1 = Registrador.R4;
 				break;
-				
+			
 			case 7:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				type1 = Registrador.EndR0;
 				break;
-				
+			
 			case 8:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				type1 = Registrador.EndR1;
 				break;
-				
+			
 			case 9:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				type1 = Registrador.EndR2;
 				break;
-				
+			
 			case 10:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				type1 = Registrador.EndR3;
 				break;
 				
 			case 11:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 12:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 13:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 14:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 15:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 16:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
+				type1 = Registrador.EndR4;
 				break;
 			
-			case 17:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-			
-			case 18:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 19:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 20:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 21:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 22:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 23:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 24:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 25:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 26:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 27:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 28:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 29:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 30:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 31:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 32:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 33:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 34:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 35:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 36:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 37:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 38:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 39:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 40:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 41:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 42:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 43:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 44:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 45:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 46:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 47:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 48:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 49:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 50:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 51:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 52:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 53:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 54:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 55:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 56:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 57:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 58:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 59:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 60:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 61:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 62:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 63:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-			
-			case 64:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 65:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 66:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 67:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 68:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 69:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 70:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 71:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 72:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 73:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 74:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 75:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 76:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 77:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 78:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 79:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 80:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 81:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 82:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 83:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 84:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 85:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 86:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 87:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 88:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 89:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 90:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 91:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 92:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 93:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 94:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 95:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 96:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 97:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 98:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 99:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 100:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 101:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 102:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 103:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 104:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 105:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 106:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 107:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 108:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 109:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 110:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 111:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 112:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 113:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 114:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 115:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 116:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 117:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 118:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 119:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 120:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 121:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 122:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 123:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 124:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 125:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 126:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 127:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 128:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 129:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 130:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 131:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 132:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 133:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 134:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 135:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 136:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 137:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 138:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 139:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 140:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 141:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 142:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 143:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 144:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 145:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 146:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 147:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 148:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 149:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 150:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 151:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 152:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 153:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 154:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 155:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 156:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 157:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 158:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 159:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 160:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 161:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 162:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 163:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 164:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 165:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 166:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 167:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 168:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 169:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 170:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 171:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 172:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 173:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 174:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 175:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 176:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 177:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 178:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 179:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 180:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 181:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 182:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 183:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 184:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 185:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 186:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 187:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 188:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 189:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 190:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 191:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 192:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 193:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 194:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 195:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 196:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 197:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 198:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 199:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 200:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 201:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 202:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 203:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 204:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 205:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 206:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 207:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 208:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 209:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 210:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 211:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 212:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 213:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 214:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 215:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 216:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 217:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 218:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 219:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 220:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 221:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 222:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 223:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 224:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 225:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 226:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 227:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 228:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 229:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 230:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 231:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 232:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 233:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 234:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 235:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 236:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 237:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 238:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 239:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 240:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 241:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 242:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 243:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 244:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 245:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 246:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 247:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 248:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 249:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 250:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 251:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 252:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 253:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 254:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 255:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 256:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 257:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 258:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 259:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 260:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 261:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 262:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 263:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 264:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 265:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 266:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 267:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 268:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 269:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 270:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 271:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 272:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 273:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 274:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 275:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 276:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 277:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 278:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 279:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 280:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 281:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 282:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 283:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 284:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 285:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 286:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 287:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 288:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 289:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 290:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 291:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 292:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 293:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 294:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 295:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 296:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 297:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 298:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 299:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 300:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 301:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 302:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 303:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 304:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 305:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 306:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 307:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 308:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 309:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 310:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 311:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 312:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 313:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 314:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 315:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 316:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 317:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 318:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 319:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 320:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 321:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 322:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 323:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 324:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 325:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 326:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 327:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 328:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 329:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 330:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 331:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 332:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 333:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 334:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 335:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 336:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 337:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 338:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 339:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 340:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 341:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 342:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 343:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 344:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 345:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 346:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 347:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 348:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 349:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 350:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 351:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 352:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 353:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 354:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 355:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 356:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 357:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 358:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 359:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 360:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 361:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 362:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 363:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 364:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 365:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 367:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 368:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 369:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 370:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 371:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 372:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 373:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 374:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 375:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 376:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 377:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 378:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 379:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 380:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 381:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 382:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 383:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 384:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 385:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 386:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 387:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 388:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 389:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 390:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 391:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 392:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 393:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 394:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 395:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 396:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 397:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 399:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-				
-			case 400:
-				this.operationRxRy(OperationBetween.ADD, Registrador.Const, Registrador.R0);
-				break;
-					
 			default:
-				this.halt();
+				type1 = Registrador.Const;
 				break;
 		}
+		
+		int k = (number%espacoParaOperacoes)/espacoParaRegistrador;
+		
+		switch(k){
+			case 0:
+				type2 = Registrador.R0;
+				break;
+				
+			case 1:
+				type2 = Registrador.R1;
+				break;
+				
+			case 2:
+				type2 = Registrador.R2;
+				break;
+				
+			case 3:
+				type2 = Registrador.R3;
+				break;
+				
+			case 4:
+				type2 = Registrador.R4;
+				break;
+				
+			case 5:
+				type2 = Registrador.EndR0;
+				break;
+				
+			case 6:
+				type2 = Registrador.EndR1;
+				break;
+				
+			case 7:
+				type2 = Registrador.EndR2;
+				break;
+				
+			case 8:
+				type2 = Registrador.EndR3;
+				break;
+				
+			case 9:
+				type2 = Registrador.EndR4;
+				break;
+				
+			default:
+				type2 = Registrador.R0;
+				break;
+		}
+		
+		this.operationRxRy(operation, type1, type2);
 	}
 	
 	private void criarMemoriaDeControle(){
@@ -2576,13 +1126,15 @@ public class ArquiteturaCompleta implements Runnable{
 			break;
 		
 		}
-		
-		switch(type2){
-			case R0:
-			{
-				//R0 <- B
-				//T1
-				this.mudaControles(this.memoriaDeControle[47]);
+	
+		if(operation != OperationBetween.CMP)
+		{	
+			switch(type2){
+				case R0:
+				{
+					//R0 <- B
+					//T1
+					this.mudaControles(this.memoriaDeControle[47]);
 				this.esperaNormalizar();
 				//T2
 				this.mudaControles(this.memoriaDeControle[47]);
@@ -2808,6 +1360,7 @@ public class ArquiteturaCompleta implements Runnable{
 			}
 			break;
 		}
+	}
 			
 		//REND <- PC+1 e A<-PC+1
 		//T1
@@ -2859,11 +1412,6 @@ public class ArquiteturaCompleta implements Runnable{
 		System.out.println("RDADO = " + FuncoesAuxiliares.getIntNumber(RDADO.getValue()));
 		System.out.println("REND = " + FuncoesAuxiliares.getIntNumber(REND.getValue()));
 		System.out.println("IR = " + FuncoesAuxiliares.getIntNumber(IR.getValue()));
-		System.out.println("Memória["+FuncoesAuxiliares.getIntNumber(this.R0.getValue())+ "] = " + FuncoesAuxiliares.getIntNumber(this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.R0.getValue()))));
-		System.out.println("Memória["+FuncoesAuxiliares.getIntNumber(this.R1.getValue())+ "] = " + FuncoesAuxiliares.getIntNumber(this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.R1.getValue()))));
-		System.out.println("Memória["+FuncoesAuxiliares.getIntNumber(this.R2.getValue())+ "] = " + FuncoesAuxiliares.getIntNumber(this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.R2.getValue()))));
-		System.out.println("Memória["+FuncoesAuxiliares.getIntNumber(this.R3.getValue())+ "] = " + FuncoesAuxiliares.getIntNumber(this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.R3.getValue()))));
-		System.out.println("Memória["+FuncoesAuxiliares.getIntNumber(this.R4.getValue())+ "] = " + FuncoesAuxiliares.getIntNumber(this.memory.getWord(FuncoesAuxiliares.getIntNumber(this.R4.getValue()))));
 	}
 	
 	private void mudaControles(boolean[] controladores){

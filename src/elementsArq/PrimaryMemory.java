@@ -45,8 +45,9 @@ public class PrimaryMemory {
 	}
 	
 	public boolean[] getWord(int position){
-		if(position >= this.tamMemory){
-			return null;
+		if(position >= this.tamMemory ||
+				position < 0){
+			return FuncoesAuxiliares.getNumber(0, this.tamWord);
 		}
 		
 		return this.memory[position];

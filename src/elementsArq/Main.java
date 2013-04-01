@@ -11,7 +11,7 @@ public class Main {
 		
 		int number = 100;
 		
-		arquitetura.insereMemoria(number, FuncoesAuxiliares.getNumber(1, 32)); //ADD #CONST, R0
+		arquitetura.insereMemoria(number, FuncoesAuxiliares.getNumber(601, 32)); //ADD #CONST, R0
 		arquitetura.insereMemoria(++number, FuncoesAuxiliares.getNumber(15, 32));// #CONST = 15
 		
 		Thread ligaComputador = new Thread(arquitetura);
