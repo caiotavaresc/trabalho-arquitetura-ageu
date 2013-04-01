@@ -1135,15 +1135,15 @@ public class ArquiteturaCompleta implements Runnable{
 					//R0 <- B
 					//T1
 					this.mudaControles(this.memoriaDeControle[47]);
-				this.esperaNormalizar();
-				//T2
-				this.mudaControles(this.memoriaDeControle[47]);
-				this.esperaNormalizar();
-				//T3
-				this.mudaControles(this.memoriaDeControle[48]);
-				this.esperaNormalizar();				
-			}
-			break;
+					this.esperaNormalizar();
+					//T2
+					this.mudaControles(this.memoriaDeControle[47]);
+					this.esperaNormalizar();
+					//T3
+					this.mudaControles(this.memoriaDeControle[48]);
+					this.esperaNormalizar();				
+				}
+				break;
 			
 			case R1:
 			{
