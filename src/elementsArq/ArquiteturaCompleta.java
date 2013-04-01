@@ -3040,27 +3040,4 @@ public class ArquiteturaCompleta implements Runnable{
 		while(this.contador <= 2){
 		}
 	}
-	
-	private enum Registrador{
-		R0,
-		R1,
-		R2,
-		R3,
-		R4,
-		EndR0,
-		EndR1,
-		EndR2,
-		EndR3,
-		EndR4,
-		Const
-	}
-	
-	private enum OperationBetween{
-		ADD,
-		SUB,
-		MOV,
-		CMP,
-		AND,
-		OR
-	}
 }
