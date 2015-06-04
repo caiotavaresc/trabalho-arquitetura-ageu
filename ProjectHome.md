@@ -1,0 +1,1 @@
+Um simulador que a partir de uma arquitetura, tenta simulá-la em funcionamento, criando desde os multiplexadores, passando pela Unidade de Controle, a ULA e todos os registradores.
